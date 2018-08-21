@@ -1,0 +1,122 @@
+version: "2"
+
+services:
+  mongodb:
+    image: mongo:3.0.4
+    command: mongod --smallfiles
+    ports:
+      - "27017:27017"
+        
+  config-server:
+    build: 
+      context: ./microservices-config-server
+      dockerfile: Dockerfile
+    image: msa-configsvr
+    ports:
+      - "8888:8888"
+          
+  eureka:
+    build: 
+      context: ./microservices-eureka
+      dockerfile: Dockerfile
+    image: msa-eureka
+    links:
+      - config-server
+    ports:
+      - "8761:8761"
+    
+  authserver:
+    build: 
+      context: ./microservices-auth-server
+      dockerfile: Dockerfile
+    image: msa-auth
+    links:
+      - eureka
+      - config-server
+    ports:
+      - "9999:9999"
+
+  gateway:
+    build: 
+      context: ./microservices-api-gateway
+      dockerfile: Dockerfile
+    image: msa-apigateway
+    links:
+      - config-server
+      - authserver
+      - eureka
+    ports:
+      - "9000:9000"
+    
+  hystrix:
+    build: 
+      context: ./microservices-hystrix-dashboard
+      dockerfile: Dockerfile
+    image: msa-hystrix
+    ports:
+      - "7979:7979"
+          
+  catalog:
+    build: 
+      context: ./microservices-catalog
+      dockerfile: Dockerfile
+    image: msa-catalog
+    links:
+      - config-server
+      - authserver
+      - eureka
+    ports:
+      - "9080:9080"
+    
+  content:
+    build: 
+      context: ./microservices-content
+      dockerfile: Dockerfile
+    image: msa-content
+    links:
+      - config-server
+      - authserver
+      - eureka
+    ports:
+      - "9084:9084"
+    
+  context:
+    build:  
+      context: ./microservices-context
+      dockerfile: Dockerfile
+    image: msa-context
+    links:
+      - config-server
+      - authserver
+      - eureka
+    ports:
+      - "9083:9083"
+    
+  review:
+    build: 
+      context: ./microservices-review
+      dockerfile: Dockerfile
+    image: msa-review
+    links:
+      - config-server
+      - authserver
+      - eureka
+      - mongodb
+    ports:
+      - "9081:9081"
+    
+  order:
+    build:
+      context: ./microservices-order
+      dockerfile: Dockerfile
+    image: msa-order
+    links:
+      - config-server
+      - authserver
+      - eureka
+      - mongodb
+    ports:
+      - "9082:9082"
+   
+
+  
