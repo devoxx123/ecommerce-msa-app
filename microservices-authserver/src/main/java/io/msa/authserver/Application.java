@@ -31,10 +31,6 @@ import io.msa.authserver.service.UserService;
 @EnableDiscoveryClient
 public class Application {
 
-	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
-	}
-
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	@Autowired
@@ -55,5 +51,7 @@ public class Application {
 	private UserDetailsService userDetailsService(final UserRepository repository) {
 		return username -> new CustomUserDetails(repository.findByUsername(username));
 	}
-
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+	}
 }
