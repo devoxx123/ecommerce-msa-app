@@ -42,10 +42,12 @@ config:
     
     
 
+#Give IP address
 eureka:
   client:
     serviceUrl:
-      defaultZone: ${vcap.services.eureka.credentials.uri:http://localhost:8761}/eureka/
+      defaultZone: http://192.168.80.31:8761/eureka/
+
 
 server:
   port: 9999
