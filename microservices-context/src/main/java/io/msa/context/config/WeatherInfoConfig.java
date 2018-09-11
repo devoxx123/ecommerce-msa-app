@@ -1,0 +1,18 @@
+package io.msa.context.config;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
+@Configuration
+@PropertySource("classpath:application.yml")
+public class WeatherInfoConfig {
+	@Autowired
+	private Environment env;
+
+	@Bean(name = "openWeatherMapApiKey")
+	public String openWeatherMapApiKey() {
+		return env.getProperty("open.weather.map.api.key");
+	}
+}
