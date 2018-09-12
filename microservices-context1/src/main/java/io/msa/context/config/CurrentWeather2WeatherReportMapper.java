@@ -1,13 +1,9 @@
 package io.msa.context.config;
 
-
-
-
 import org.springframework.stereotype.Component;
 
 import io.msa.context.models.WeatherInfo;
 import net.aksingh.owmjapis.model.CurrentWeather;
-import net.aksingh.owmjapis.model.param.City;
 
 import java.util.Optional;
 

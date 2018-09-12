@@ -7,6 +7,7 @@ import io.msa.context.config.CustomDateSerializer;
 import io.msa.context.config.CustomTimeSerializer;
 
 
+
 public class WeatherInfo {
 	private Integer cityId;
 	private String cityName;

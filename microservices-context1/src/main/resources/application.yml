@@ -1,0 +1,15 @@
+
+server:
+  port: 9083
+
+security:
+   basic: 
+     enabled: false
+
+#Give IP address
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.80.31:8761/eureka/
+
+      
