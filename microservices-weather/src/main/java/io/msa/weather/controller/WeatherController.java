@@ -27,7 +27,7 @@ public class WeatherController {
     public WeatherInfo getCurrentWeatherForCity(@PathVariable(value = "cityCode") String cityCode) throws OpenWeatherMapServiceException,JSONException, IOException, NumberFormatException, APIException {
         return IWeatherService.getCurrentWeatherForCity(cityCode).orElseThrow(() -> new OpenWeatherMapServiceException("Weather data unavailable"));
     }
-    @RequestMapping(value = { "/current/{cityName}" }, method = RequestMethod.GET)
+    @RequestMapping(value ="/current/{cityName}", method = RequestMethod.GET)
     public WeatherInfo getCurrentWeatherForCityName(@PathVariable(value="cityName") String cityName) throws OpenWeatherMapServiceException, JSONException, IOException, APIException{
 		return IWeatherService.getCurrentWeatherForCityName(cityName).orElseThrow(()-> new OpenWeatherMapServiceException("Weather data unavailable"));
     	
