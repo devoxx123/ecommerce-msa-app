@@ -22,13 +22,6 @@ public class WeatherService {
 
 	private ValidationUtils validationUtils;
 
-	public WeatherService(String openWeatherMapApiKey, CurrentWeather2WeatherReportMapper mapper,
-			ValidationUtils validationUtils) {
-		this.owm = new OWM(openWeatherMapApiKey);
-		this.mapper = mapper;
-		this.validationUtils = validationUtils;
-	}
-
 	public Optional<WeatherInfo> getCurrentWeatherForCity(String cityCode)throws JSONException, IOException, NumberFormatException, APIException {
 		if (!validationUtils.isValidCityCode(cityCode)) {
 			throw new InvalidCityCodeException();
