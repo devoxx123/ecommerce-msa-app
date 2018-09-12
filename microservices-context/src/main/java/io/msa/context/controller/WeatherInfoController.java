@@ -21,15 +21,15 @@ import net.aksingh.owmjapis.api.APIException;
 public class WeatherInfoController {
 	
 	 @Autowired
-	private WeatherInfoService IWeatherService;
+	private WeatherInfoService weatherInfoService;
 
     @RequestMapping(value = "/current/{cityCode}")
     public WeatherInfo getCurrentWeatherForCity(@PathVariable(value = "cityCode") String cityCode) throws OpenWeatherMapServiceException,JSONException, IOException, NumberFormatException, APIException {
-        return IWeatherService.getCurrentWeatherForCity(cityCode).orElseThrow(() -> new OpenWeatherMapServiceException("Weather data unavailable"));
+        return weatherInfoService.getCurrentWeatherForCity(cityCode).orElseThrow(() -> new OpenWeatherMapServiceException("Weather data unavailable"));
     }
     @RequestMapping(value = { "/current/{cityName}" }, method = RequestMethod.GET)
     public WeatherInfo getCurrentWeatherForCityName(@PathVariable(value="cityName") String cityName) throws OpenWeatherMapServiceException, JSONException, IOException, APIException{
-		return IWeatherService.getCurrentWeatherForCityName(cityName).orElseThrow(()-> new OpenWeatherMapServiceException("Weather data unavailable"));
+		return weatherInfoService.getCurrentWeatherForCityName(cityName).orElseThrow(()-> new OpenWeatherMapServiceException("Weather data unavailable"));
     	
     }
 }
