@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: microservices-weather
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: SCIIT
+Implementation-Vendor-Id: io.msa
+Build-Jdk: 1.8.0_171
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+Main-Class: io.msa.weather.Application
+

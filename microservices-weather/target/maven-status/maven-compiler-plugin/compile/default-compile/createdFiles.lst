@@ -1,0 +1,13 @@
+com\weather\beans\WeatherReport.class
+com\weather\config\WeatherConfig.class
+com\weather\beans\CustomTimeSerializer.class
+com\weather\beans\CustomDateSerializer.class
+com\weather\exception\InvalidCityNameException.class
+com\weather\beans\CurrentWeather2WeatherReportMapper.class
+com\weather\service\IWeatherService.class
+com\weather\service\WeatherService.class
+com\weather\controller\WeatherController.class
+com\weather\exception\InvalidCityCodeException.class
+com\weather\exception\OpenWeatherMapServiceException.class
+com\weather\utils\ValidationUtils.class
+com\weather\WeatherHqApplication.class
