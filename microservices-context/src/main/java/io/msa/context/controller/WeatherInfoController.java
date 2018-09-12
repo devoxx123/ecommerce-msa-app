@@ -20,12 +20,8 @@ import net.aksingh.owmjapis.api.APIException;
 @RequestMapping("/weather")
 public class WeatherInfoController {
 	
+	 @Autowired
 	private WeatherInfoService IWeatherService;
-
-    @Autowired
-    public WeatherInfoController(WeatherInfoService IWeatherService) {
-        this.IWeatherService = IWeatherService;
-    }
 
     @RequestMapping(value = "/current/{cityCode}")
     public WeatherInfo getCurrentWeatherForCity(@PathVariable(value = "cityCode") String cityCode) throws OpenWeatherMapServiceException,JSONException, IOException, NumberFormatException, APIException {
