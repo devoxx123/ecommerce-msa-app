@@ -10,6 +10,7 @@ security:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://192.168.80.31:8761/eureka/
+      #defaultZone: http://192.168.80.31:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/
 
       

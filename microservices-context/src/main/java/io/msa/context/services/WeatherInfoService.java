@@ -22,16 +22,10 @@ public class WeatherInfoService {
 	private CurrentWeather2WeatherReportMapper mapper;
 
 	private ValidationUtils validationUtils;
+	
+	public WeatherInfoService() {}
 
-	public WeatherInfoService(String openWeatherMapApiKey, CurrentWeather2WeatherReportMapper mapper,
-			ValidationUtils validationUtils) {
-		this.owm = new OWM(openWeatherMapApiKey);
-		this.mapper = mapper;
-		this.validationUtils = validationUtils;
-	}
-
-	public Optional<WeatherInfo> getCurrentWeatherForCity(String cityCode)
-			throws JSONException, IOException, NumberFormatException, APIException {
+	public Optional<WeatherInfo> getCurrentWeatherForCity(String cityCode)throws JSONException, IOException, NumberFormatException, APIException {
 		if (!validationUtils.isValidCityCode(cityCode)) {
 			throw new InvalidCityCodeException();
 		}
@@ -39,8 +33,7 @@ public class WeatherInfoService {
 		return (validationUtils.isValidWeatherResponse(cwm)) ? mapper.map(cwm) : Optional.empty();
 	}
 
-	public Optional<WeatherInfo> getCurrentWeatherForCityName(String cityName)
-			throws JSONException, IOException, APIException {
+	public Optional<WeatherInfo> getCurrentWeatherForCityName(String cityName)throws JSONException, IOException, APIException {
 		if (!validationUtils.isValidCityName(cityName)) {
 			throw new InvalidCityNameException();
 		}
