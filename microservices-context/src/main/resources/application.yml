@@ -1,16 +1,40 @@
+info:
+  build:
+    artifact: ${project.artifactId}
+    name: ${project.name}
+    description: ${project.description}
+    version: ${project.version} 
 
+#spring:
+#  data:
+#    mongodb:
+#      host: localhost
+#      database: sfdev
+#      port: 27017
+
+spring:
+   jpa:
+    database: MYSQL
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      dialect: org.hibernate.dialect.MySQLDialect
+      
+   datasource:
+        url: jdbc:mysql://awsdb.c96clothhsrh.us-east-2.rds.amazonaws.com:3306/jhomedb
+        username: datasourcedb
+        password: 123456789
+        driver-class-name: com.mysql.jdbc.Driver
+        testWhileIdle: true
+        validationQuery: SELECT 1
+        timeBetweenEvictionRunsMillis: 50000
+   
 server:
   port: 9083
 
-security:
-   basic: 
-     enabled: false
 
 #Give IP address
 eureka:
   client:
     serviceUrl:
-      #defaultZone: http://192.168.80.31:8761/eureka/
-      defaultZone: http://localhost:8761/eureka/
-
-      
+      defaultZone: http://192.168.80.31:8761/eureka/

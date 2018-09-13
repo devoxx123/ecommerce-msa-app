@@ -3,6 +3,9 @@ spring:
     name: context-service
   cloud:
     config:
+
+# Define the URL from where this service would pick up it's external configuration. Note that it is
+# pointing to the config-server aplication      
       uri: ${vcap.services.config-server.credentials.uri:http://localhost:8888}
 
 ---
@@ -12,3 +15,5 @@ spring:
   cloud:
      config:
         uri: http://config-server:8888
+       
+ 

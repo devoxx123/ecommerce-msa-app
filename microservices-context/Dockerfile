@@ -1,6 +1,5 @@
 FROM openjdk:8
-MAINTAINER Hari Kishore
-ADD target/*.jar /msa-content.jar
-RUN bash -c 'touch /msa-content.jar'
-CMD ["java","-Dspring.profiles.active=docker","-jar","/msa-content.jar"]
-EXPOSE 9084
+MAINTAINER SCI IT Solutions PVT LTD
+ADD target/microservice-context.jar  microservice-context.jar
+EXPOSE 9081
+ENTRYPOINT ["java","-jar","microservice-context.jar"]
