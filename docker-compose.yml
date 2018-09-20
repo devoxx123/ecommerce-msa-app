@@ -27,7 +27,7 @@ services:
     
   authserver:
     build: 
-      context: ./microservices-auth-server
+      context: ./microservices-authserver
       dockerfile: Dockerfile
     image: msa-auth
     links:
